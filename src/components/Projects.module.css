@@ -111,3 +111,19 @@
 .card:hover .cardGlow {
     opacity: 1;
 }
+
+@media (max-width: 768px) {
+    .projects {
+        padding: 4rem 1rem;
+    }
+
+    .title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
