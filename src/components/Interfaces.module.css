@@ -39,16 +39,33 @@
 }
 
 @media (max-width: 768px) {
+    .interfaces {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .title {
+        padding-right: 2rem;
+        /* Keep title aligned */
+    }
+
     .card {
-        min-width: 85vw;
-        /* Almost full width for mobile focus */
-        height: 60vh;
+        min-width: 80vw;
+        /* Let next card peek through */
+        height: 55vh;
+        scroll-snap-align: center;
     }
 
     .grid {
         padding-left: 2rem;
-        /* Initial padding */
         padding-right: 2rem;
+        gap: 1.5rem;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        /* Smooth scroll iOS */
+        scroll-behavior: smooth;
     }
 }
 
