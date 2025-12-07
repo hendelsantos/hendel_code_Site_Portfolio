@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Space_Mono } from "next/font/google"; // Import standard fonts if not already there, or use existing
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
+import SpotifyWidget from "@/components/SpotifyWidget";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Hendel Code | Frontend Creator",
-  description: "Portfolio of Hendel Code, Frontend Creator and Fullstack Developer.",
+  title: "Hendel Code | Chaos & Logic",
+  description: "Portfolio of Hendel Santos - Frontend Creative",
 };
 
 export default function RootLayout({
@@ -18,7 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider>
+          {children}
+          <SpotifyWidget />
+        </LanguageProvider>
       </body>
     </html>
   );

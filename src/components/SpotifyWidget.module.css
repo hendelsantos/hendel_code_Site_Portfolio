@@ -1,0 +1,81 @@
+.container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toggleBtn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #1db954;
+    /* Spotify Green */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    z-index: 1001;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.toggleBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(29, 185, 84, 0.4);
+}
+
+.playerWrapper {
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    width: 300px;
+    height: 380px;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform-origin: bottom right;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    transform: scale(0.5) translateY(20px);
+    pointer-events: none;
+}
+
+.playerWrapper.open {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: all;
+}
+
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .container {
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .playerWrapper {
+        width: 280px;
+        height: 160px;
+        /* Smaller height for mobile */
+    }
+}
