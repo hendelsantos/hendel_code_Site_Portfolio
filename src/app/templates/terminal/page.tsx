@@ -2,6 +2,7 @@
 
 import styles from "./terminal.module.css";
 import { useState, useRef, useEffect } from "react";
+import { useMusic } from "@/context/MusicContext";
 
 export default function TerminalPage() {
     const [history, setHistory] = useState<string[]>([
@@ -14,14 +15,47 @@ export default function TerminalPage() {
     const inputRef = useRef<HTMLInputElement>(null);
     const bottomRef = useRef<HTMLDivElement>(null);
 
+    const { nextTrack, playTrack, currentTrack, tracks, isVisualizerActive, toggleVisualizer } = useMusic();
+
     const handleCommand = (e: React.FormEvent) => {
         e.preventDefault();
         const cmd = input.trim().toLowerCase();
 
+        // Handle music args
+        const args = cmd.split(" ");
+        const mainCmd = args[0];
+        const subCmd = args[1];
+
         let response = "";
-        switch (cmd) {
+        switch (mainCmd) {
             case 'help':
-                response = "Available commands: about, skills, contact, clear, exit";
+                response = "Available commands: music, visualizer, about, skills, contact, clear, exit";
+                break;
+            case 'music':
+                if (!subCmd || subCmd === 'status') {
+                    response = `Now Playing: [${currentTrack.title}] by ${currentTrack.artist}`;
+                } else if (subCmd === 'next') {
+                    nextTrack();
+                    response = "Swapping audio stream... [OK]";
+                } else if (subCmd === 'list') {
+                    response = "Tracks: " + tracks.map((t, i) => `[${i}] ${t.title}`).join(", ");
+                } else if (parseInt(subCmd) >= 0) {
+                    playTrack(parseInt(subCmd));
+                    response = `Loading track [${subCmd}]...`;
+                } else {
+                    response = "Music usage: music [next|list|status|0-9]";
+                }
+                break;
+            case 'visualizer':
+                if (subCmd === 'on') {
+                    if (!isVisualizerActive) toggleVisualizer();
+                    response = "Audio Reactive HUD: ENABLED";
+                } else if (subCmd === 'off') {
+                    if (isVisualizerActive) toggleVisualizer();
+                    response = "Audio Reactive HUD: DISABLED";
+                } else {
+                    response = "Usage: visualizer [on|off]";
+                }
                 break;
             case 'about':
                 response = "Hendel Santos. Frontend Creator. Specialist in Chaos & Logic.";

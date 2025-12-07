@@ -3,13 +3,14 @@
   --surface: #0a0a0a;
   --foreground: #e0e0e0;
   --foreground-dim: #888888;
-  
+
   --accent: #2a2a2a;
   --accent-glow: rgba(255, 255, 255, 0.05);
-  
+
   --font-main: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-serif: var(--font-playfair), serif; /* Placeholder if we add a serif font */
-  
+  --font-serif: var(--font-playfair), serif;
+  /* Placeholder if we add a serif font */
+
   --spacing-unit: 8px;
   --radius-sm: 4px;
   --radius-md: 8px;
@@ -37,6 +38,43 @@ body {
   color: var(--foreground);
   font-family: var(--font-main);
   -webkit-font-smoothing: antialiased;
+  cursor: none !important;
+  /* Hide default cursor */
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+
+  /* Audio Pulsing Effect */
+  box-shadow: inset 0 0 50px var(--pulse-color);
+  animation: heartbeat var(--pulse-speed) ease-in-out infinite;
+  transition: box-shadow 0.5s ease;
+}
+
+@keyframes heartbeat {
+  0% {
+    box-shadow: inset 0 0 20px var(--pulse-color);
+  }
+
+  50% {
+    box-shadow: inset 0 0 60px var(--pulse-color);
+  }
+
+  100% {
+    box-shadow: inset 0 0 20px var(--pulse-color);
+  }
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  cursor: none !important;
+  /* Hide default cursor on interactive elements */
 }
 
 a {
@@ -48,9 +86,11 @@ a {
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--background);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--accent);
   border-radius: 3px;
