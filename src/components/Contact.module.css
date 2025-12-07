@@ -31,7 +31,8 @@
     position: relative;
 }
 
-.input {
+.input,
+.select {
     width: 100%;
     padding: 10px 0;
     background: transparent;
@@ -42,6 +43,21 @@
     outline: none;
     transition: border-color 0.3s ease;
     font-family: inherit;
+    border-radius: 0;
+}
+
+.select {
+    cursor: pointer;
+    appearance: none;
+}
+
+/* Fix for select arrow if needed, but keeping it simple for now */
+
+.select option {
+    background: #000;
+    /* Fallback */
+    color: #fff;
+    padding: 10px;
 }
 
 .textarea {
@@ -49,7 +65,8 @@
     min-height: 100px;
 }
 
-.input:focus {
+.input:focus,
+.select:focus {
     border-bottom-color: var(--accent);
 }
 
@@ -66,7 +83,11 @@
 }
 
 .input:focus~.label,
-.input:valid~.label {
+.input:valid~.label,
+.select:focus~.label,
+.select:valid~.label,
+.select:not([value=""])~.label {
+    /* Logic for select to keep label up */
     top: -20px;
     font-size: 0.7rem;
     color: var(--accent);
