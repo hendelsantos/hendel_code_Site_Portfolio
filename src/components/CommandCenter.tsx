@@ -39,7 +39,7 @@ export default function CommandCenter() {
     return (
         <section className={styles.container}>
             <div className={styles.header}>
-                <h2 className={styles.title}>CENTRAL_DE_COMANDO <span className={styles.status}>ONLINE</span></h2>
+                <h2 className={styles.title}>CENTRAL_DE_COMANDO_GITHUB <span className={styles.status}>ONLINE</span></h2>
                 <div className={styles.clock}>{new Date().toLocaleDateString('pt-BR')}</div>
             </div>
 
