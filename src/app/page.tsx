@@ -5,6 +5,7 @@ import Contact from "@/components/Contact";
 import CommandCenter from "@/components/CommandCenter";
 import LanguageSwitch from "@/components/LanguageSwitch";
 import Services from "@/components/Services";
+import Interfaces from "@/components/Interfaces";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <About />
       <CommandCenter />
       <Services />
+      <Interfaces />
       <Projects />
       <Contact />
     </main>

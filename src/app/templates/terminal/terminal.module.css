@@ -1,0 +1,104 @@
+.terminal {
+    background: #000;
+    min-height: 100vh;
+    color: #0f0;
+    font-family: 'VT323', monospace;
+    /* Assuming a retro font or fallback */
+    padding: 2rem;
+    overflow-y: auto;
+    font-size: 1.2rem;
+}
+
+.crtLine {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 2px 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.header {
+    border-bottom: 2px solid #0f0;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+}
+
+.asciiArt {
+    white-space: pre;
+    line-height: 1;
+    font-size: 10px;
+    margin-bottom: 1rem;
+    color: #0f0;
+}
+
+.output {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.line {
+    animation: fadeIn 0.1s ease forwards;
+}
+
+.commandLine {
+    display: flex;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+.prompt {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.input {
+    background: transparent;
+    border: none;
+    color: #0f0;
+    font-family: inherit;
+    font-size: inherit;
+    flex: 1;
+    outline: none;
+}
+
+.cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1.2em;
+    background: #0f0;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Success/Error Colors */
+.success {
+    color: #00ff00;
+}
+
+.error {
+    color: #ff0000;
+}
+
+.warning {
+    color: #ffff00;
+}

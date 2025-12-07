@@ -1,0 +1,104 @@
+.page {
+    background: #fdfdfd;
+    color: #111;
+    min-height: 100vh;
+    font-family: 'Georgia', serif;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5%;
+    border-bottom: 1px solid #eee;
+}
+
+.logo {
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.links {
+    display: flex;
+    gap: 3rem;
+    list-style: none;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero {
+    display: flex;
+    padding: 10rem 5%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.heroContent {
+    max-width: 50%;
+}
+
+.heading {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    font-weight: normal;
+}
+
+.subtext {
+    font-family: 'Helvetica', sans-serif;
+    color: #555;
+    line-height: 1.8;
+    max-width: 400px;
+    margin-bottom: 3rem;
+}
+
+.cta {
+    padding: 1rem 3rem;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.heroImage {
+    width: 40%;
+    height: 500px;
+    background: #f0f0f0;
+    position: relative;
+    overflow: hidden;
+}
+
+.heroImage::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000&auto=format&fit=crop');
+    /* Placeholder clean architecture */
+    background-size: cover;
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+}
+
+.heroImage:hover::after {
+    filter: grayscale(0%);
+}
+
+.footer {
+    padding: 5rem 5%;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #eee;
+    font-family: 'Helvetica', sans-serif;
+    font-size: 0.8rem;
+    color: #888;
+}

@@ -1,0 +1,147 @@
+.container {
+    background: #000;
+    min-height: 100vh;
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.scanlines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0) 50%,
+            rgba(0, 0, 0, 0.2) 50%,
+            rgba(0, 0, 0, 0.2));
+    background-size: 100% 4px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.glitchTitle {
+    font-size: 4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    animation: glitch 1s infinite alternate;
+}
+
+.glitchTitle::before,
+.glitchTitle::after {
+    content: "QR GEN";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+}
+
+.glitchTitle::before {
+    left: 2px;
+    text-shadow: -1px 0 red;
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+.glitchTitle::after {
+    left: -2px;
+    text-shadow: -1px 0 blue;
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+.demoBox {
+    background: #111;
+    border: 2px solid #0f0;
+    padding: 2rem;
+    margin: 2rem 0;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 0 10px #0f0;
+}
+
+.qrPlaceholder {
+    width: 200px;
+    height: 200px;
+    background: #fff;
+    margin: 0 auto 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.qrNoise {
+    width: 180px;
+    height: 180px;
+    background-image: radial-gradient(#000 20%, transparent 20%);
+    /* Simplified noise */
+    background-size: 10px 10px;
+}
+
+.input {
+    width: 100%;
+    background: #000;
+    border: 1px solid #0f0;
+    color: #0f0;
+    padding: 0.5rem;
+    font-family: inherit;
+    margin-bottom: 1rem;
+}
+
+.btn {
+    background: #0f0;
+    color: #000;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    background: #fff;
+}
+
+.backLink {
+    margin-top: 2rem;
+    color: #0f0;
+    text-decoration: underline;
+    opacity: 0.6;
+}

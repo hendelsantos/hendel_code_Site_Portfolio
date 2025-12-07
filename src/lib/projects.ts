@@ -19,7 +19,7 @@ export const projects: Project[] = [
             en: "Decentralized Digital Notary on the Polygon blockchain. Register and authenticate documents with immutable proof, affordable cost, and instant global validation. Cryptographic security without intermediaries.",
         },
         tags: ["Web3", "Polygon", "Next.js", "Solidity", "Smart Contracts"],
-        link: "https://www.hashdocs.com.br/",
+        link: "/projects/hashdocs",
         type: "web3",
     },
     {
@@ -30,7 +30,7 @@ export const projects: Project[] = [
             en: "Modern QR Code generator for WhatsApp, URLs, and text. Clean, fast, and free interface.",
         },
         tags: ["React", "Railway", "Utilities"],
-        link: "https://web-production-64115.up.railway.app/",
+        link: "/projects/qrcode-gen",
         type: "frontend",
     },
     {
@@ -41,7 +41,7 @@ export const projects: Project[] = [
             en: "Smart Point of Sale Management System (SaaS). Inventory control, sales, and real-time reporting.",
         },
         tags: ["React", "Node.js", "Railway", "SaaS"],
-        link: "https://devoted-nurturing-production-6ca7.up.railway.app/",
+        link: "/projects/pdv-saas",
         type: "fullstack",
     },
 ];

@@ -1,0 +1,153 @@
+.interfaces {
+    padding: 6rem 2rem;
+    background: #000;
+    position: relative;
+}
+
+.title {
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    text-align: right;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+    opacity: 0.7;
+}
+
+.grid {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding-bottom: 2rem;
+    scroll-snap-type: x mandatory;
+}
+
+.card {
+    min-width: 300px;
+    height: 400px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    scroll-snap-align: start;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+}
+
+.card:hover {
+    border-color: #fff;
+    transform: translateY(-5px);
+}
+
+.preview {
+    height: 70%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* Previews */
+.previewComic {
+    background: linear-gradient(to bottom, #333 50%, #000 50%);
+    background-size: 100% 20px;
+}
+
+.previewMobile {
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.previewMobile::after {
+    content: '';
+    width: 40px;
+    height: 80px;
+    border: 2px solid #555;
+    border-radius: 5px;
+}
+
+.previewGallery {
+    background: radial-gradient(circle at 30% 30%, #444, #000);
+}
+
+.previewTerminal {
+    background: #000;
+    color: #0f0;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.previewTerminal::after {
+    content: '>_';
+    font-size: 2rem;
+    animation: blink 1s infinite;
+}
+
+.previewCorporate {
+    background: #fdfdfd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.previewCorporate::after {
+    content: 'Aa';
+    font-family: serif;
+    font-size: 3rem;
+    color: #000;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.info {
+    padding: 1.5rem;
+    color: #fff;
+}
+
+.cardTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.arrow {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .arrow {
+    transform: translateX(5px);
+}
+
+.cardDesc {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* Scrollbar styling */
+.grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.grid::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.grid::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
