@@ -7,8 +7,8 @@ export default function About() {
     const { t, language } = useLanguage();
 
     const bio = language === "pt"
-        ? "Sou um desenvolvedor apaixonado por criar experiências digitais que transcendem o comum. No caos do código, encontro a ordem da criatividade. Especializado em Frontend, mas navegando com facilidade pelo espectro Fullstack."
-        : "I am a developer passionate about creating digital experiences that transcend the ordinary. In the chaos of code, I find the order of creativity. Specialized in Frontend, but navigating the Fullstack spectrum with ease.";
+        ? "Domino a Inteligência Artificial para acelerar o tangível, mas vou onde ela não alcança: na criatividade pura, nas vivências e na essência humana. Crio em torno do caos da mente, explorando as fronteiras entre lógica e imaginação. Este não é apenas um portfólio; é um experimento procedural em engenharia frontend, uma experiência imersiva feita de código e alma."
+        : "I master Artificial Intelligence to accelerate the tangible, but I go where it cannot reach: into pure creativity, lived experiences, and human essence. I create around the chaos of the mind, exploring the frontiers between logic and imagination. This is not just a portfolio; it is a procedural experiment in frontend engineering, an immersive experience made of code and soul.";
 
     return (
         <section className={styles.about}>
