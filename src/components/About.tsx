@@ -17,7 +17,7 @@ export default function About() {
                 <p className={styles.bio}>{bio}</p>
 
                 <div className={styles.skills}>
-                    {["TypeScript", "Next.js", "React", "Node.js", "SQLite", "Creative Coding"].map(skill => (
+                    {["TypeScript", "Next.js", "React", "Node.js", "Python", "Postgres", "Web3", "SQLite", "Creative Coding"].map(skill => (
                         <span key={skill} className={styles.skill}>{skill}</span>
                     ))}
                 </div>

@@ -7,41 +7,41 @@ export interface Project {
     };
     tags: string[];
     link: string;
-    type: "frontend" | "fullstack";
+    type: "frontend" | "fullstack" | "web3";
 }
 
 export const projects: Project[] = [
     {
-        id: "1",
-        title: "Neon Nexus",
+        id: "hashdocs",
+        title: "HashDocs",
         description: {
-            pt: "Uma interface futurista com animações complexas em CSS e WebGL.",
-            en: "A futuristic interface with complex CSS animations and WebGL.",
+            pt: "Cartório Digital Descentralizado na blockchain Polygon. Registre e autentique documentos com prova imutável, custo acessível e validação global instantânea. Segurança criptográfica sem intermediários.",
+            en: "Decentralized Digital Notary on the Polygon blockchain. Register and authenticate documents with immutable proof, affordable cost, and instant global validation. Cryptographic security without intermediaries.",
         },
-        tags: ["React", "Three.js", "GSAP"],
-        link: "#",
+        tags: ["Web3", "Polygon", "Next.js", "Solidity", "Smart Contracts"],
+        link: "https://www.hashdocs.com.br/",
+        type: "web3",
+    },
+    {
+        id: "qrcode-gen",
+        title: "QR Code Gen",
+        description: {
+            pt: "Gerador de QR Codes modernos para WhatsApp, URLs e textos. Interface limpa, rápida e gratuita.",
+            en: "Modern QR Code generator for WhatsApp, URLs, and text. Clean, fast, and free interface.",
+        },
+        tags: ["React", "Railway", "Utilities"],
+        link: "https://web-production-64115.up.railway.app/",
         type: "frontend",
     },
     {
-        id: "2",
-        title: "Shadow Bank",
+        id: "pdv-saas",
+        title: "PDV SaaS",
         description: {
-            pt: "Sistema bancário simulado com autenticação e transações seguras.",
-            en: "Simulated banking system with authentication and secure transactions.",
+            pt: "Sistema de Gestão Inteligente para Pontos de Venda (SaaS). Controle de estoque, vendas e relatórios em tempo real.",
+            en: "Smart Point of Sale Management System (SaaS). Inventory control, sales, and real-time reporting.",
         },
-        tags: ["Next.js", "PostgreSQL", "Tailwind"],
-        link: "#",
+        tags: ["React", "Node.js", "Railway", "SaaS"],
+        link: "https://devoted-nurturing-production-6ca7.up.railway.app/",
         type: "fullstack",
-    },
-    {
-        id: "3",
-        title: "Void Gallery",
-        description: {
-            pt: "Galeria de arte imersiva com carregamento procedural infinito.",
-            en: "Immersive art gallery with infinite procedural loading.",
-        },
-        tags: ["TypeScript", "Canvas API", "SWR"],
-        link: "#",
-        type: "frontend",
     },
 ];
