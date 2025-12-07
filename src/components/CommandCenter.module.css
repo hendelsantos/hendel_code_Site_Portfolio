@@ -59,8 +59,11 @@
 
     .container {
         padding: 1rem;
-        min-height: auto;
-        /* Allow flexible height on mobile */
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+        /* Allow scrolling */
+        overflow-x: hidden;
     }
 
     .header {
