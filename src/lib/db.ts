@@ -1,12 +1,17 @@
 // src/lib/db.ts
 import fs from 'fs';
 import path from 'path';
+import os from 'os';
 
-const DB_FILE = path.resolve(process.cwd(), 'messages.json');
+const DB_FILE = path.resolve(os.tmpdir(), 'messages.json');
 
 // Ensure DB file exists
 if (!fs.existsSync(DB_FILE)) {
-    fs.writeFileSync(DB_FILE, JSON.stringify([], null, 2));
+    try {
+        fs.writeFileSync(DB_FILE, JSON.stringify([], null, 2));
+    } catch (e) {
+        console.error('Failed to create DB file at startup:', e);
+    }
 }
 
 export function saveMessage(data: { name: string; email: string; subject: string; budget: string; message: string }) {
