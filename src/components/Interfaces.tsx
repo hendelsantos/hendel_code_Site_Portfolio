@@ -7,7 +7,10 @@ import { useState, useRef, useEffect } from "react";
 export default function Interfaces() {
     const { t } = useLanguage();
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isAutoRotating, setIsAutoRotating] = useState(true);
+    const [isMobile, setIsMobile] = useState(false);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
+    const autoRotateTimerRef = useRef<NodeJS.Timeout | null>(null);
 
     const creativeSites = [
         {
@@ -30,6 +33,16 @@ export default function Interfaces() {
         }
     ];
 
+    // Detect mobile device
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     const handlePrev = () => {
         setCurrentIndex((prev) => (prev > 0 ? prev - 1 : creativeSites.length - 1));
     };
@@ -40,9 +53,29 @@ export default function Interfaces() {
 
     const handleDotClick = (index: number) => {
         setCurrentIndex(index);
+        // Pause auto-rotation when user manually selects
+        setIsAutoRotating(false);
+        if (autoRotateTimerRef.current) {
+            clearInterval(autoRotateTimerRef.current);
+        }
     };
 
-    // Scroll to current index on mobile
+    // Auto-rotation for mobile
+    useEffect(() => {
+        if (isMobile && isAutoRotating && creativeSites.length > 1) {
+            autoRotateTimerRef.current = setInterval(() => {
+                setCurrentIndex((prev) => (prev < creativeSites.length - 1 ? prev + 1 : 0));
+            }, 4000); // Rotate every 4 seconds
+
+            return () => {
+                if (autoRotateTimerRef.current) {
+                    clearInterval(autoRotateTimerRef.current);
+                }
+            };
+        }
+    }, [isMobile, isAutoRotating, creativeSites.length]);
+
+    // Scroll to current index
     useEffect(() => {
         if (scrollContainerRef.current) {
             const container = scrollContainerRef.current;
@@ -53,6 +86,25 @@ export default function Interfaces() {
             });
         }
     }, [currentIndex, creativeSites.length]);
+
+    // Handle touch events to pause auto-rotation
+    const handleTouchStart = () => {
+        if (isMobile) {
+            setIsAutoRotating(false);
+            if (autoRotateTimerRef.current) {
+                clearInterval(autoRotateTimerRef.current);
+            }
+        }
+    };
+
+    const handleTouchEnd = () => {
+        if (isMobile) {
+            // Resume auto-rotation after 10 seconds of inactivity
+            setTimeout(() => {
+                setIsAutoRotating(true);
+            }, 10000);
+        }
+    };
 
     return (
         <section className={styles.interfaces}>
@@ -70,7 +122,12 @@ export default function Interfaces() {
                     </svg>
                 </button>
 
-                <div className={styles.grid} ref={scrollContainerRef}>
+                <div
+                    className={styles.grid}
+                    ref={scrollContainerRef}
+                    onTouchStart={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                >
                     {creativeSites.map((item, index) => (
                         <a
                             href={item.link}
@@ -120,6 +177,8 @@ export default function Interfaces() {
                         aria-label={`Go to project ${index + 1}`}
                     />
                 ))}
+                {/* Auto-rotation progress bar */}
+                <div className={`${styles.autoRotateProgress} ${isMobile && isAutoRotating ? styles.active : ''}`} />
             </div>
         </section>
     );
