@@ -131,19 +131,19 @@
 /* Mobile: Show 1 card */
 @media (max-width: 768px) {
     .interfaces {
-        padding-left: 0;
-        padding-right: 0;
+        padding: 4rem 0;
     }
 
     .title {
         padding-right: 2rem;
         padding-left: 2rem;
         font-size: 2rem;
+        margin-bottom: 2rem;
     }
 
     .carouselContainer {
-        padding: 0 1rem;
-        gap: 1rem;
+        padding: 0;
+        gap: 0;
     }
 
     .navArrow {
@@ -152,15 +152,18 @@
     }
 
     .grid {
-        padding-left: 0;
-        padding-right: 0;
-        gap: 1.5rem;
+        padding: 0 1rem;
+        gap: 1rem;
         scroll-padding: 0 1rem;
     }
 
     .card {
-        min-width: 85vw;
+        min-width: 90vw;
+        max-width: 90vw;
         scroll-snap-align: center;
+        aspect-ratio: 4 / 5;
+        min-height: 420px;
+        max-height: 520px;
     }
 }
 
@@ -234,12 +237,7 @@
     transform: translateY(-4px);
 }
 
-@media (max-width: 768px) {
-    .card {
-        min-height: 520px;
-        aspect-ratio: 9 / 14;
-    }
-}
+
 
 .card::before {
     content: '';
@@ -592,6 +590,35 @@
     line-height: 1.6;
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
+
+/* Mobile adjustments for card content */
+@media (max-width: 768px) {
+    .info {
+        padding: 1.5rem;
+    }
+
+    .cardTitle {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .cardDesc {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    .badges {
+        top: 10px;
+        right: 10px;
+        gap: 4px;
+    }
+
+    .badge {
+        padding: 3px 8px;
+        font-size: 0.65rem;
+    }
+}
+
 
 /* Badges */
 .badges {
