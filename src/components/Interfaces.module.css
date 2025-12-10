@@ -44,18 +44,161 @@
     }
 }
 
+/* Carousel Container */
+.carouselContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    z-index: 1;
+}
+
+/* Navigation Arrows */
+.navArrow {
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #00ffff;
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.navArrow:hover {
+    background: rgba(0, 255, 255, 0.2);
+    border-color: #00ffff;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.navArrow:active {
+    transform: scale(0.95);
+}
+
+.navArrowLeft {
+    margin-right: -1rem;
+}
+
+.navArrowRight {
+    margin-left: -1rem;
+}
+
+/* Grid - Desktop shows 3, Mobile shows 1 */
 .grid {
     display: flex;
     gap: 2rem;
     overflow-x: auto;
-    padding-bottom: 2rem;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE/Edge */
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    padding: 1rem 0;
+}
+
+.grid::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+}
+
+/* Desktop: Show 3 cards */
+@media (min-width: 769px) {
+    .grid {
+        justify-content: center;
+    }
+
+    .card {
+        min-width: calc(33.333% - 1.5rem);
+        flex-shrink: 0;
+    }
+}
+
+/* Mobile: Show 1 card */
+@media (max-width: 768px) {
+    .interfaces {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .title {
+        padding-right: 2rem;
+        padding-left: 2rem;
+        font-size: 2rem;
+    }
+
+    .carouselContainer {
+        padding: 0 1rem;
+        gap: 1rem;
+    }
+
+    .navArrow {
+        display: none;
+        /* Hide arrows on mobile, use swipe instead */
+    }
+
+    .grid {
+        padding-left: 0;
+        padding-right: 0;
+        gap: 1.5rem;
+        scroll-padding: 0 1rem;
+    }
+
+    .card {
+        min-width: 85vw;
+        scroll-snap-align: center;
+    }
+}
+
+/* Position Indicators (Dots) */
+.indicators {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 2rem;
     position: relative;
     z-index: 1;
 }
 
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.dot:hover {
+    background: rgba(0, 255, 255, 0.3);
+    border-color: rgba(0, 255, 255, 0.5);
+    transform: scale(1.2);
+}
+
+.dotActive {
+    background: #00ffff;
+    border-color: #00ffff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+    transform: scale(1.3);
+}
+
+/* Card Base Styles */
 .card {
-    min-width: 320px;
     height: 420px;
     background: rgba(20, 20, 20, 0.4);
     backdrop-filter: blur(10px);
@@ -70,34 +213,20 @@
     text-decoration: none;
     display: block;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+}
+
+/* Active card highlight */
+.cardActive {
+    border-color: rgba(0, 255, 255, 0.5);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.3),
+        0 0 60px rgba(255, 0, 255, 0.2),
+        0 16px 48px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 768px) {
-    .interfaces {
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    .title {
-        padding-right: 2rem;
-        font-size: 2rem;
-    }
-
     .card {
-        min-width: 80vw;
         height: 55vh;
-        scroll-snap-align: center;
-    }
-
-    .grid {
-        padding-left: 2rem;
-        padding-right: 2rem;
-        gap: 1.5rem;
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scroll-behavior: smooth;
     }
 }
 
