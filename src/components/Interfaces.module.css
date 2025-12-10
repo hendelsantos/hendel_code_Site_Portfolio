@@ -327,6 +327,85 @@
     background-size: 110% auto;
 }
 
+/* EUPHORIA Preview - Music Festival */
+.previewEuphoria {
+    background-image:
+        linear-gradient(135deg, rgba(138, 43, 226, 0.5) 0%, rgba(255, 0, 128, 0.4) 50%, rgba(0, 191, 255, 0.5) 100%),
+        url('/euphoria-preview.png');
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.previewEuphoria::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 30% 50%, rgba(255, 0, 128, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 70% 50%, rgba(0, 191, 255, 0.3) 0%, transparent 50%),
+        linear-gradient(135deg, rgba(138, 43, 226, 0.4) 0%, transparent 100%);
+    opacity: 0.9;
+    transition: opacity 0.4s ease;
+    animation: festivalPulse 4s ease-in-out infinite;
+}
+
+@keyframes festivalPulse {
+
+    0%,
+    100% {
+        opacity: 0.9;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+}
+
+.previewEuphoria::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background:
+        repeating-linear-gradient(0deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.03) 2px,
+            rgba(255, 255, 255, 0.03) 4px);
+    animation: scanlines 8s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes scanlines {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(50%);
+    }
+}
+
+.card:hover .previewEuphoria::before {
+    opacity: 0.5;
+}
+
+.card:hover .previewEuphoria {
+    background-size: 115% auto;
+}
+
+
 
 .info {
     padding: 1.5rem;

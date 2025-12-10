@@ -16,6 +16,15 @@ export default function Interfaces() {
             previewClass: styles.previewNexus,
             badges: ["Arte", "Galeria", "Interativo"],
             isExternal: true
+        },
+        {
+            id: "euphoria",
+            title: "EUPHORIA 2024",
+            desc: "Festival de Música Eletrônica - Landing page imersiva com lineup, experiências e galeria de momentos épicos",
+            link: "https://portfoliofrontedeuphoria-production.up.railway.app/",
+            previewClass: styles.previewEuphoria,
+            badges: ["Festival", "Música", "Eventos"],
+            isExternal: true
         }
     ];
 
