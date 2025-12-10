@@ -129,6 +129,7 @@
 }
 
 /* Mobile: Show 1 card */
+/* Mobile: Show 1 card */
 @media (max-width: 768px) {
     .interfaces {
         padding: 4rem 0;
@@ -148,22 +149,29 @@
 
     .navArrow {
         display: none;
-        /* Hide arrows on mobile, use swipe instead */
     }
 
     .grid {
-        padding: 0 1rem;
-        gap: 1rem;
-        scroll-padding: 0 1rem;
+        /* Centering logic: (100vw - 85vw) / 2 = 7.5vw padding on sides */
+        padding: 0 7.5vw;
+        gap: 1.5rem;
+        scroll-padding: 0 7.5vw;
+        /* Ensure scroll snap works perfectly */
+        scroll-snap-type: x mandatory;
+        justify-content: flex-start;
+        /* Items start from padding */
     }
 
     .card {
-        min-width: 90vw;
-        max-width: 90vw;
+        min-width: 85vw;
+        max-width: 85vw;
         scroll-snap-align: center;
+        /* Snap to center of viewport */
         aspect-ratio: 4 / 5;
         min-height: 420px;
         max-height: 520px;
+        margin: 0;
+        /* Remove auto margins */
     }
 }
 
