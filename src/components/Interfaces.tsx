@@ -7,46 +7,15 @@ import Link from "next/link";
 export default function Interfaces() {
     const { t } = useLanguage();
 
-    const interfaces = [
+    const creativeSites = [
         {
-            id: "comic",
-            titleKey: "interface_comic_title",
-            descKey: "interface_comic_desc",
-            link: "/templates/comic",
-            previewClass: styles.previewComic,
-            badges: ["Interactive", "Visual"]
-        },
-        {
-            id: "mobile",
-            titleKey: "interface_mobile_title",
-            descKey: "interface_mobile_desc",
-            link: "/templates/mobile",
-            previewClass: styles.previewMobile,
-            badges: ["Responsive", "Touch"]
-        },
-        {
-            id: "gallery",
-            titleKey: "interface_gallery_title",
-            descKey: "interface_gallery_desc",
-            link: "/templates/gallery",
-            previewClass: styles.previewGallery,
-            badges: ["Grid", "Visual"]
-        },
-        {
-            id: "terminal",
-            titleKey: "interface_terminal_title",
-            descKey: "interface_terminal_desc",
-            link: "/templates/terminal",
-            previewClass: styles.previewTerminal,
-            badges: ["CLI", "Animated"]
-        },
-        {
-            id: "corporate",
-            titleKey: "interface_corporate_title",
-            descKey: "interface_corporate_desc",
-            link: "/templates/corporate",
-            previewClass: styles.previewCorporate,
-            badges: ["Minimal", "Business"]
+            id: "nexus",
+            title: "NEXUS",
+            desc: "Portfólio de Arte Contemporânea - Pintor de quadros com galeria interativa e design vibrante",
+            link: "https://portfoliofrontendnexus-production.up.railway.app/",
+            previewClass: styles.previewNexus,
+            badges: ["Arte", "Galeria", "Interativo"],
+            isExternal: true
         }
     ];
 
@@ -55,8 +24,14 @@ export default function Interfaces() {
             <h2 className={styles.title}>{t("interfaces_title")}</h2>
 
             <div className={styles.grid}>
-                {interfaces.map((item) => (
-                    <Link href={item.link} key={item.id} className={styles.card}>
+                {creativeSites.map((item) => (
+                    <a
+                        href={item.link}
+                        key={item.id}
+                        className={styles.card}
+                        target={item.isExternal ? "_blank" : undefined}
+                        rel={item.isExternal ? "noopener noreferrer" : undefined}
+                    >
                         <div className={`${styles.preview} ${item.previewClass}`}>
                             <div className={styles.badges}>
                                 {item.badges.map((badge) => (
@@ -68,12 +43,12 @@ export default function Interfaces() {
                         </div>
                         <div className={styles.info}>
                             <h3 className={styles.cardTitle}>
-                                {t(item.titleKey)}
+                                {item.title}
                                 <span className={styles.arrow}>→</span>
                             </h3>
-                            <p className={styles.cardDesc}>{t(item.descKey)}</p>
+                            <p className={styles.cardDesc}>{item.desc}</p>
                         </div>
-                    </Link>
+                    </a>
                 ))}
             </div>
         </section>
