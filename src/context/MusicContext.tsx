@@ -38,6 +38,14 @@ const tracks: Track[] = [
         embedId: "track/4HJstaowKzntYfQdG6agTG",
         bpm: 60, // Calm, steady
         theme: "#00bfff" // Deep Sky Blue (Zen)
+    },
+    {
+        id: "euphoria",
+        title: "New Track",
+        artist: "Spotify Selection",
+        embedId: "track/6VAXBaGsv3IyVXckUrmd8Z",
+        bpm: 128, // Energetic
+        theme: "#ff00ff" // Magenta (Euphoric)
     }
 ];
 
